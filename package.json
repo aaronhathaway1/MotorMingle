@@ -2,7 +2,7 @@
   "name": "motormingle",
   "description": "This is a backend designed to help car enthusiasts get together.",
   "version": "1.0.0",
-  "main": "server.js",
+  "main": "server.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/aaronhathaway1/MotorMingle.git"
@@ -13,7 +13,8 @@
     "url": "https://github.com/aaronhathaway1/MotorMingle/issues"
   },
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.ts",
+    "dev": "nodemon server.ts"
   },
   "homepage": "https://github.com/aaronhathaway1/MotorMingle#readme",
   "dependencies": {
