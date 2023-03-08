@@ -1,7 +1,15 @@
 const express = require('express')
-const app = express()
-const port = process.env.PORT || 3000
+const connectMongoose = require('./db/connect')
 
+require('mongoose')
+require('dotenv').config()
+
+connectMongoose()
+
+const port = process.env.PORT || 3000
+const app = express()
+
+console.log(process.env.PORT, port)
 app.use('/', require('./routes'))
 
 app.listen(port,  ()=> {

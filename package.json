@@ -1,42 +1,43 @@
 {
-    "name": "motormingle",
-    "description": "This is a backend designed to help car enthusiasts get together.",
-    "version": "1.0.0",
-    "main": "server.js",
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/aaronhathaway1/MotorMingle.git"
-    },
-    "author": "Troy Davidson, A-A-ron Hathaway, Denise Rebollo, Keith Mair",
-    "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/aaronhathaway1/MotorMingle/issues"
-    },
-    "scripts": {
-        "start": "node server.js"
-    },
-    "homepage": "https://github.com/aaronhathaway1/MotorMingle#readme",
-    "dependencies": {
-        "body-parser": "^1.20.2",
-        "cors": "^2.8.5",
-        "dotenv": "^16.0.3",
-        "express": "^4.18.2",
-        "express-session": "^1.17.3",
-        "mongodb": "^5.1.0",
-        "mongoose": "^7.0.1",
-        "passport": "^0.6.0",
-        "passport-google-oauth20": "^2.0.0",
-        "swagger-ui-express": "^4.6.2",
-        "validatorjs": "^3.22.1"
-    },
-    "devDependencies": {
-        "eslint": "^8.35.0",
-        "eslint-config-airbnb-base": "^15.0.0",
-        "eslint-config-prettier": "^8.7.0",
-        "eslint-plugin-import": "^2.27.5",
-        "morgan": "^1.10.0",
-        "nodemon": "^2.0.21",
-        "prettier": "^2.8.4",
-        "swagger-autogen": "^2.23.1"
-    }
-}
+  "name": "motormingle",
+  "description": "This is a backend designed to help car enthusiasts get together.",
+  "version": "1.0.0",
+  "main": "server.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aaronhathaway1/MotorMingle.git"
+  },
+  "author": "Troy Davidson, Aaron Hathaway, Denise Rebollo, Keith Mair",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aaronhathaway1/MotorMingle/issues"
+  },
+  "scripts": {
+    "start": "node server.ts",
+    "dev": "nodemon server.ts"
+  },
+  "homepage": "https://github.com/aaronhathaway1/MotorMingle#readme",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "mongodb": "^5.1.0",
+    "mongoose": "^7.0.1",
+    "passport": "^0.6.0",
+    "passport-google-oauth20": "^2.0.0",
+    "swagger-ui-express": "^4.6.2",
+    "validatorjs": "^3.22.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.35.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.7.0",
+    "eslint-plugin-import": "^2.27.5",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.21",
+    "prettier": "^2.8.4",
+    "swagger-autogen": "^2.23.1"
+  }
+  }
