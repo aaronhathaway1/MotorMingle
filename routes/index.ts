@@ -1,3 +1,7 @@
-const routes = require('express').Router()
+import Router from 'express'
 
-module.exports = routes
+const router = Router()
+
+router.use('/clubs', require('./clubs'))
+
+module.exports = router
