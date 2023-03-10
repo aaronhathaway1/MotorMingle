@@ -4,7 +4,7 @@ import { Request, Response } from 'express';
 // import { Car } from '../models';
 import getDb from "../db/connect";
 
-const apiKey = 'KZ9u3ZO4cT5W3nf6HnZc17aYwskqCymnVpqSqo32JJYx3qFqXsCOlwxZXKnSbHDK';
+// const apiKey = 'KZ9u3ZO4cT5W3nf6HnZc17aYwskqCymnVpqSqo32JJYx3qFqXsCOlwxZXKnSbHDK';
 
 export const getData = async (req: Request, res: Response): Promise<void> => {
     try {
