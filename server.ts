@@ -1,4 +1,5 @@
-import express, { Application } from 'express';
+import express from 'express';
+import 'dotenv/config'
 import { connectMongoose } from './db/connect';
 import bodyParser from 'body-parser';
 import morgan from 'morgan';
@@ -11,7 +12,7 @@ connectMongoose()
 
 
 const port = process.env.PORT || 3000
-const app: Application = express();
+const app = express();
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
@@ -28,7 +29,6 @@ app.use(
 )
 app.use(cors())
 app.use('/', require('./routes'))
-app.listen(port, () => {
+app.listen(port, (): void => {
     console.log(`MotorMingle app listening on port ${port}`)
 })
-export default app;

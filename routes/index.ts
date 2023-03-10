@@ -1,3 +1,11 @@
-const routes = require('express').Router()
+import { Router } from 'express';
+import carsRouter from './cars';
 
-module.exports = routes
+
+const router: Router = Router();
+
+router.use('/cars', carsRouter);
+
+
+module.exports = router;
+

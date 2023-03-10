@@ -1,7 +1,7 @@
 import { ObjectId } from 'mongodb';
 import { Request, Response } from 'express';
 // import { carValidation } from './validation';
-import  Car from '../models/cars';
+// import  Car from '../models/cars';
 import connectMongoose from "../db/connect";
 
 // const apiKey = 'KZ9u3ZO4cT5W3nf6HnZc17aYwskqCymnVpqSqo32JJYx3qFqXsCOlwxZXKnSbHDK';
