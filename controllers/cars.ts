@@ -2,13 +2,13 @@ import { ObjectId } from 'mongodb';
 import { Request, Response } from 'express';
 // import { carValidation } from './validation';
 // import { Car } from '../models';
-import getDb from "../db/connect";
+import connectMongoose from "../db/connect";
 
 // const apiKey = 'KZ9u3ZO4cT5W3nf6HnZc17aYwskqCymnVpqSqo32JJYx3qFqXsCOlwxZXKnSbHDK';
 
 export const getData = async (req: Request, res: Response): Promise<void> => {
     try {
-        const connection = await getDb();
+        const connection = await connectMongoose();
         const result = await connection.collection('cars').find();
         const lists = await result.toArray();
         res.setHeader('Content-Type', 'application/json');
@@ -23,7 +23,7 @@ export const getData = async (req: Request, res: Response): Promise<void> => {
 export const getSingleData = async (req: Request, res: Response): Promise<void> => {
     try {
         const userId = new ObjectId(req.params.id);
-        const connection = await getDb();
+        const connection = await connectMongoose();
         const result =  await connection.collection('cars').find({ _id: userId });
         const lists = await result.toArray();
         res.setHeader('Content-Type', 'application/json');
@@ -45,7 +45,7 @@ export const createNewCar = async (req: Request, res: Response): Promise<void> =
             year: req.body.year,
             price: req.body.price,
         };
-        const connection = await getDb();
+        const connection = await connectMongoose();
         const response = await connection.collection('cars').insertOne(car);
         if (response.acknowledged) {
             res.status(201).json(response);
@@ -75,11 +75,11 @@ export const updateCar = async (req: Request, res: Response): Promise<void> => {
             year: req.body.year,
             price: req.body.price,
         };
-        const db = getDb();
+        const db = connectMongoose();
         if (!db) {
             throw new Error('Database not available');
         }
-        const connection = await getDb();
+        const connection = await connectMongoose();
         const response = await connection.collection('cars').replaceOne({ _id: userId }, car);
         console.log(response);
         if (response.modifiedCount ?? 0 > 0) {
@@ -98,7 +98,7 @@ export const updateCar = async (req: Request, res: Response): Promise<void> => {
 // delete car by id
 export const deleteCar = async (req: Request, res: Response): Promise<void> => {
     try {
-        const connection = await getDb();
+        const connection = await connectMongoose();
         const userId = new ObjectId(req.params.id);
         const response = await connection.collection('cars').deleteOne({ _id: userId });
         console.log(response);

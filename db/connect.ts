@@ -7,7 +7,7 @@ interface MyConnectOptions extends ConnectOptions {
 
 mongoose.set('strictQuery', true)
 
-export const getDb = async (): Promise<Connection> => {
+export const connectMongoose = async (): Promise<Connection> => {
     try {
         const conn = await mongoose.connect(process.env.MONGODB_URI ?? '', {
             dbName: 'steel_horses',
@@ -24,4 +24,4 @@ export const getDb = async (): Promise<Connection> => {
     }
 }
 
-export default getDb
+export default connectMongoose
