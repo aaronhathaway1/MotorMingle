@@ -13,7 +13,8 @@
     "url": "https://github.com/aaronhathaway1/MotorMingle/issues"
   },
   "scripts": {
-    "start": "node server.ts",
+    "start": "node ./build/server.js",
+    "build": "tsc -p .",
     "dev": "nodemon server.ts"
   },
   "homepage": "https://github.com/aaronhathaway1/MotorMingle#readme",
@@ -40,6 +41,7 @@
     "morgan": "^1.10.0",
     "nodemon": "^2.0.21",
     "prettier": "^2.8.4",
-    "swagger-autogen": "^2.23.1"
+    "swagger-autogen": "^2.23.1",
+    "typescript": "^4.9.5"
   }
 }
