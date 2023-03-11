@@ -1,6 +1,7 @@
 const swaggerAutogen = require('swagger-autogen')()
 const inDevMode = process.env.NODE_ENV === 'development'
 let doc
+console.log(process.env.NODE_ENV)
 
 if (inDevMode) {
     doc = {

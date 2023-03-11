@@ -16,7 +16,7 @@
     "prestart": "NODE_ENV=production node ./build/swagger.js",
     "start": "node ./build/server.js",
     "build": "tsc -p .",
-    "dev": "NODE_ENV=development node ./swagger.ts nodemon server.ts",
+    "dev": "NODE_ENV=development node ./swagger.ts & nodemon server.ts",
     "swagger": "node ./swagger.ts"
   },
   "homepage": "https://github.com/aaronhathaway1/MotorMingle#readme",
