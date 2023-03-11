@@ -4,15 +4,12 @@ const ObjectId = require('mongodb').ObjectId
 
 const returnAllClubs = async (req: Request, res: Response) => {
     try {
-        await Club.find((err: Error, allClubs: typeof Club) => {
-            if (err) {
-                res.status(500).json(err)
-            }
+        await Club.find().then((allClubs: typeof Club) => {
             res.setHeader('Content-Type', 'application/json')
             res.status(200).json(allClubs)
         })
     } catch (err) {
-        console.log(err)
+        console.log('catch error:', err)
         res.status(500).json(err)
     }
 }
@@ -45,10 +42,7 @@ const findClubById = async (req: Request, res: Response) => {
 
     const clubId = new ObjectId(req.params.id)
     try {
-        Club.findById(clubId, function (err: Error, club: typeof Club) {
-            if (err) {
-                res.status(500).json({ message: err })
-            }
+        await Club.findById(clubId).then((club: typeof Club) => {
             if (club) {
                 res.setHeader('Content-Type', 'application/json')
                 res.status(200).json(club)
@@ -61,4 +55,67 @@ const findClubById = async (req: Request, res: Response) => {
     }
 }
 
-module.exports = { returnAllClubs, createClub, findClubById }
+const updateClub = async (req: Request, res: Response) => {
+    if (!ObjectId.isValid(req.params)) {
+        res.status(400).json('Must use a valid Club ID.')
+    }
+    const clubId = new ObjectId(req.params.id)
+    try {
+        let doc = await Club.findOne(clubId)
+        if (!doc) {
+            res.status(404).json(`Club with ID ${clubId} not found.`)
+        }
+        if (req.body.clubName) {
+            doc.clubName = req.body.clubName
+        }
+        if (req.body.clubLocation) {
+            doc.clubLocation = req.body.clubLocation
+        }
+        if (req.body.president) {
+            doc.president = req.body.president
+        }
+        if (req.body.clubCreator) {
+            doc.clubCreator = req.body.clubCreator
+        }
+        if (req.body.clubMembers) {
+            doc.clubMembers = req.body.clubMembers
+        }
+        await doc.save()
+        res.status(204).json()
+    } catch (err: any) {
+        if (err.name === 'CastError') {
+            res.status(400).json(err.message)
+        } else {
+            res.status(500).json(err)
+        }
+    }
+}
+
+const deleteClub = async (req: Request, res: Response) => {
+    if (!ObjectId.isValid(req.params)) {
+        res.status(400).json('Must use a valid Club ID.')
+    }
+    const clubId = new ObjectId(req.params.id)
+    console.log('clubId = ', clubId)
+    try {
+        await Club.deleteOne({ _id: clubId }).then((response: any) => {
+            if (response.deletedCount > 0) {
+                res.status(200).json(response)
+            } else {
+                res.status(404).json(
+                    response.error || `Unable to find club with ID ${clubId}`
+                )
+            }
+        })
+    } catch (err) {
+        res.status(500).json(err)
+    }
+}
+
+module.exports = {
+    returnAllClubs,
+    createClub,
+    findClubById,
+    updateClub,
+    deleteClub,
+}
