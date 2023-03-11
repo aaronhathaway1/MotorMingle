@@ -13,7 +13,7 @@ mongoose.set('strictQuery', true);
 const connectDB = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const conn = yield mongoose.connect(process.env.MONGODB_URI, {
-            dbName: 'steel_horses',
+            dbName: 'MotorMingle',
             connectTimeoutMS: 2000,
             useNewUrlParser: true,
             useUnifiedTopology: true,

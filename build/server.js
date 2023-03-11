@@ -4,12 +4,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
+require("dotenv/config");
 const connectMongoose = require('./db/connect');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const cors = require('cors');
 require('mongoose');
-require('dotenv').config();
 connectMongoose();
 const port = process.env.PORT || 3000;
 const app = (0, express_1.default)();
