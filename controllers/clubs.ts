@@ -77,12 +77,27 @@ const updateClub = async (req: Request, res: Response) => {
         if (req.body.clubCreator) {
             doc.clubCreator = req.body.clubCreator
         }
-        if (req.body.clubMembers) {
-            doc.clubMembers = req.body.clubMembers
+        if (req.body.clubMembers?.length > 1) {
+            for (let i in req.body.clubMembers) {
+                if (doc.clubMembers.includes(req.body.clubMembers[i])) {
+                    res.status(400).json(
+                        `${req.body.clubMembers[i]} is already a member of ${doc.clubName}.`
+                    )
+                    return
+                } else {
+                    doc.clubMembers.push(req.body.clubMembers[i])
+                }
+            }
+        } else if (!doc.clubMembers.includes(req.body.clubMembers)) {
+            doc.clubMembers.push(req.body.clubMembers)
+        }
+        if (doc.clubMembers.includes(req.body.removeMember)) {
+            doc.clubMembers.remove(req.body.removeMember)
         }
         await doc.save()
         res.status(204).json()
     } catch (err: any) {
+        console.log('catch error', err)
         if (err.name === 'CastError') {
             res.status(400).json(err.message)
         } else {

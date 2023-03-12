@@ -127,6 +127,9 @@
                 },
                 "clubMembers": {
                   "example": "any"
+                },
+                "removeMember": {
+                  "example": "any"
                 }
               }
             }
