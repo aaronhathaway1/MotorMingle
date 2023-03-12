@@ -18,7 +18,7 @@ const createEvent = async (req: Request, res: Response): Promise<void> => {
     const event = new Event({
         date: req.body.date,
         time: req.body.time,
-        location: req.body.president,
+        location: req.body.location,
         organizer: req.body.organizer,
     })
     try {
