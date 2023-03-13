@@ -25,13 +25,13 @@ async function getOnePerson (req: Request, res: Response) {
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         email: req.body.email,
-        password: req.body.password,
-        phone: req.body.phone,
-        address: req.body.address,
+        birthday: req.body.birthday,
+        city: req.body.city,
+        state: req.body.state
     }
     try{
         
-        const newPerson = await modelUser.create(person);
+        const newPerson = await modelUser.collection.insertOne(person);
         res.status(201).json(newPerson);
         if(newPerson){
             console.log("Person created");

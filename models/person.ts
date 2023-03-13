@@ -16,11 +16,6 @@ const personSchema = new schema ({
         type: String,
         required: true
         },
-    password: {
-        type: String,
-        required: true
-
-    },
     birthday: {
         type: Date,
         required: true

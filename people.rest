@@ -12,11 +12,11 @@ Content-Type: application/json
     "firstName":"Alfredo",
     "lastName":"Rebollo",
     "email":"user@gmail.com",
-    "birthDate":"06/15/1999",
-    "City": "Albuquerque",
-    "State": "NM"
+    "birthday":"06/15/1999",
+    "city": "Albuquerque",
+    "state": "NM"
 }
 
 ###
-DELETE http://localhost:3000/person/ HTTP/1.1
+DELETE http://localhost:3000/person/640f7edc188658e8bbf7b921 HTTP/1.1
 
