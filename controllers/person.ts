@@ -1,1 +1,74 @@
 //person controller
+import { Request, Response } from 'express' 
+const mongoose = require('mongoose');
+const modelUser = require('../models/person'); 
+
+//get All Person 
+const getAllPerson = async (req: Request, res: Response) => {
+
+    const people = await modelUser.find();
+    res.status(200).json(people);
+    console.log('get all person')
+}
+
+//get one person
+async function getOnePerson (req: Request, res: Response) {
+
+    const id = req.params.id;
+    const person = await modelUser.findById(id);
+    res.status(200).json(person);
+}
+
+//create new user person
+  async function createPerson (req: Request, res: Response){
+    const person = {
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        email: req.body.email,
+        password: req.body.password,
+        phone: req.body.phone,
+        address: req.body.address,
+    }
+    try{
+        
+        const newPerson = await modelUser.create(person);
+        res.status(201).json(newPerson);
+        if(newPerson){
+            console.log("Person created");
+        }
+        else{
+            res.status(400).json('unable to create person');
+            console.log("Person not created");
+        }
+   }
+   catch(error){
+    console.log('error: ' + error);
+    res.status(500).json(error);
+      }
+  }
+
+
+//update person 
+async function updatePerson (req: Request, res: Response) {
+    const id = req.params.id;
+    const person = await modelUser.findByIdAndUpdate(id);
+    res.status(200).json(person);
+
+
+}
+
+//delete person
+async function deletePerson (req: Request, res: Response) {
+    const id = req.params.id;
+    const person = await modelUser.findByIdAndDelete(id);
+    res.status(200).json(person);
+}   
+
+module.exports = {
+
+    getAllPerson,
+    getOnePerson,
+    createPerson,
+    updatePerson,
+    deletePerson
+}
