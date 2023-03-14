@@ -1,11 +1,15 @@
-import { Router } from 'express';
-import carsRouter from './cars';
+import Router from 'express'
+import swaggerUi from 'swagger-ui-express'
 
+const swaggerDocument: any = require('../swagger.json')
+const router = Router()
 
-const router: Router = Router();
+router
+    .use('/cars'. require('./cars'))
+    .use('/clubs', require('./clubs'))
+    .use('/events', require('./events'))
+    .use('/api-docs', swaggerUi.serve)
+    .get('/api-docs', swaggerUi.setup(swaggerDocument))
 
-router.use('/cars', carsRouter);
-
-
-module.exports = router;
+module.exports = router
 

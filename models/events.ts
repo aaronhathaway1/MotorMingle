@@ -1,29 +1,28 @@
 import mongoose from 'mongoose'
 
-const ClubSchema = new mongoose.Schema({
-    clubName: {
+const EventSchema = new mongoose.Schema({
+    date: {
         type: 'String',
         required: true,
     },
-    clubLocation: {
+    time: {
         type: 'String',
         required: true,
     },
-    president: {
+    location: {
         type: 'String',
         required: true,
     },
-    clubCreator: {
+    organizer: {
         type: 'String',
         required: true,
     },
-    clubMembers: ['String'],
 })
 
-ClubSchema.statics = {
+EventSchema.statics = {
     valueExists(query) {
         return this.findOne(query).then((result: any) => result)
     },
 }
 
-module.exports = mongoose.model('Club', ClubSchema)
+module.exports = mongoose.model('Event', EventSchema)
