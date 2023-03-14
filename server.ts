@@ -1,15 +1,17 @@
-import express from 'express'
+import express from 'express';
 import 'dotenv/config'
-const connectMongoose = require('./db/connect')
-const bodyParser = require('body-parser')
-const cors = require('cors')
+import { connectMongoose } from './db/connect';
+import bodyParser from 'body-parser';
+import morgan from 'morgan';
+import cors from 'cors';
 
 require('mongoose')
 
 connectMongoose()
 
+
 const port = process.env.PORT || 3000
-const app = express()
+const app = express();
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
