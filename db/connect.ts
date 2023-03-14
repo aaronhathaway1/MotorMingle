@@ -10,7 +10,7 @@ mongoose.set('strictQuery', true)
 export const connectMongoose = async (): Promise<Connection> => {
     try {
         const conn = await mongoose.connect(process.env.MONGODB_URI ?? '', {
-            dbName: 'steel_horses',
+            dbName: 'motormingledb',
             connectTimeoutMS: 2000,
             useNewUrlParser: true,
             useUnifiedTopology: true,
