@@ -10,11 +10,11 @@ mongoose.set('strictQuery', true)
 export const connectMongoose = async (): Promise<Connection> => {
     try {
         const conn = await mongoose.connect(process.env.MONGODB_URI ?? '', {
-            dbName: 'motormingledb',
+            dbName: 'MotorMingle',
             connectTimeoutMS: 2000,
             useNewUrlParser: true,
             useUnifiedTopology: true,
-        } as MyConnectOptions);
+        } as MyConnectOptions)
 
         console.log(`MongoDB Connected: ${conn.connection.host}`)
         return conn.connection

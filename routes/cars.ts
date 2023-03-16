@@ -1,6 +1,6 @@
 import { Router } from 'express'
 
-import * as carsController from '../controllers/cars';
+import * as carsController from '../controllers/cars'
 
 const router = Router()
 
@@ -12,4 +12,4 @@ router
     .put('/:id', carsController.updateCar)
     .delete('/:id', carsController.deleteCar)
 
-export default router;
+module.exports = router
