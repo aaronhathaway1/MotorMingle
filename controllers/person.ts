@@ -6,9 +6,20 @@ const modelUser = require('../models/person');
 //get All Person 
 const getAllPerson = async (req: Request, res: Response) => {
 
-    const people = await modelUser.find();
-    res.status(200).json(people);
-    console.log('get all person')
+    try{
+        const person = await modelUser.find();
+        if(person){
+            res.status(200).json(person);
+        }
+        else 
+        {
+            res.status(404).json({message: 'No person found'});
+        }
+    }
+   
+    catch(err){
+        res.status(500).json(err);
+    }
 }
 
 //get one person

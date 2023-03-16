@@ -17,17 +17,16 @@ const personSchema = new schema ({
         required: true
         },
     birthday: {
-        type: Date,
-        required: true
+        type: Date
     },
-    city: {
-        type: String,
-        required: true
+    city: { 
+        type: String
     },
     state: {
-        type: String,
-        required: true
+        type: String
     }
+     
+
 });
 
  
