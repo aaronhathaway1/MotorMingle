@@ -1,35 +1,32 @@
 import mongoose from 'mongoose'
-const schema = mongoose.Schema;
+const schema = mongoose.Schema
 
-const personSchema = new schema ({
-
-   firstName: {
-    type: String,
-    required: true
+const personSchema = new schema({
+    googleId: {
+        type: String,
+        required: true,
+    },
+    firstName: {
+        type: String,
+        required: true,
     },
     lastName: {
         type: String,
-        required: true
-
-        },
+        required: true,
+    },
     email: {
         type: String,
-        required: true
-        },
-    birthday: {
-        type: Date
+        required: true,
     },
-    city: { 
-        type: String
+    birthday: {
+        type: Date,
+    },
+    city: {
+        type: String,
     },
     state: {
-        type: String
-    }
-     
+        type: String,
+    },
+})
 
-});
-
- 
-module.exports = mongoose.model('Person', personSchema);
-
-
+module.exports = mongoose.model('Person', personSchema)
