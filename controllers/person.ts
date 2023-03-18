@@ -24,6 +24,7 @@ async function getOnePerson(req: Request, res: Response) {
     res.status(200).json(person)
 }
 
+/***** REMOVED PASSPORT WILL CREATE USER *
 //create new user person
 async function createPerson(req: Request, res: Response) {
     const person = {
@@ -45,6 +46,7 @@ async function createPerson(req: Request, res: Response) {
         res.status(500).json(error)
     }
 }
+*/
 
 //update person
 async function updatePerson(req: Request, res: Response) {
@@ -63,7 +65,7 @@ async function deletePerson(req: Request, res: Response) {
 module.exports = {
     getAllPerson,
     getOnePerson,
-    createPerson,
+    //createPerson,
     updatePerson,
     deletePerson,
 }
