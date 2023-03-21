@@ -19,14 +19,39 @@ const getAllPerson = async (req: Request, res: Response) => {
 
 //get one person
 async function getOnePerson(req: Request, res: Response) {
-    const id = req.params.id
-    const person = await modelUser.findById(id)
-    res.status(200).json(person)
+    try{
+        const id = req.params.id
+        const person = await modelUser.findById(id)
+        if (person) {
+            res.status(200).json(person)
+        } else {
+            res.status(404).json({ message: 'No person found' })
+        }
+    }
+    catch(err){
+        res.status(500).json({message:"error occured while fetching person"})
+    }
+    
+    
 }
-
-/***** REMOVED PASSPORT WILL CREATE USER *
+ 
+ 
 //create new user person
+/*
 async function createPerson(req: Request, res: Response) {
+    
+    if(req.body.email > 1){
+        for(let i in req.body.email){
+            if(req.body.email[i] > 1){
+                res.status(400).json({ message: 'Email already exists' })
+                return
+            }
+            else{
+                req.body.email[i] = req.body.email[i].toLowerCase()
+            }
+        }
+       
+    }
     const person = {
         firstName: req.body.firstName,
         lastName: req.body.lastName,
@@ -47,19 +72,55 @@ async function createPerson(req: Request, res: Response) {
     }
 }
 */
+ 
 
 //update person
 async function updatePerson(req: Request, res: Response) {
-    const id = req.params.id
+
+    try{
+        const id = req.params.id
+        const person = {
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            email: req.body.email,
+            birthday: req.body.birthday,
+            city: req.body.city,
+            state: req.body.state,
+        } 
+        const updatedPerson = await modelUser.findByIdAndUpdate(id, person, { new: true })
+        res.status(200).json(updatedPerson)
+        if (updatedPerson) {
+            res.status(200).json({message: "Person updated successfully"})
+        } else {
+            res.status(400).json('Unable to update person.')
+        }
+    }
+    catch(err){
+        res.status(500).json({message:"Error occur updating person."})
+    }
+   
+   /* const id = req.params.id
     const person = await modelUser.findByIdAndUpdate(id)
     res.status(200).json(person)
+    */
 }
 
 //delete person
 async function deletePerson(req: Request, res: Response) {
-    const id = req.params.id
-    const person = await modelUser.findByIdAndDelete(id)
-    res.status(200).json(person)
+    
+    try{
+        const id = req.params.id
+        const person = await modelUser.findByIdAndDelete(id)
+        res.status(200).json(person)
+        if(person){
+            res.status(200).json({message: 'person deleted successfully'})
+        }else{
+            res.status(404).json({message: 'person not found'})
+        }
+    }
+    catch(err){        
+        res.status(500).json({message: "Error in deleting person"})
+    }
 }
 
 module.exports = {

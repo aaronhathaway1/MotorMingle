@@ -2,21 +2,34 @@
 GET http://localhost:3000/person
 
 ###
-GET http://localhost:3000/person/6415278a36a84d3235f6c15d
+GET http://localhost:3000/person/6418f2112a3036a10ea9d8b9
 
 ###
-PUT http://localhost:3000/person/6415278a36a84d3235f6c15d HTTP/1.1
+POST http://localhost:3000/person HTTP/1.1
 Content-Type: application/json
 
 {
     "firstName":"Denise",
     "lastName":"Rebollo",
     "email":"drebollo116@gmail.com",
+    "birthday":"03/26/1984",
+    "city": "Albuquerque",
+    "state": "NM"
+}
+
+###
+PUT http://localhost:3000/person/6418f2112a3036a10ea9d8b9 HTTP/1.1
+Content-Type: application/json
+
+{
+    "firstName":"Denise",
+    "lastName":"Marie",
+    "email":"email3@gmail.com",
     "birthday":"",
     "city": "Albuquerque",
     "state": "NM"
 }
 
 ###
-DELETE http://localhost:3000/person/64150ff71b46d1d6841eb917 HTTP/1.1
+DELETE http://localhost:3000/person/6418f2112a3036a10ea9d8b9 HTTP/1.1
 
