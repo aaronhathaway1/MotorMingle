@@ -9,8 +9,8 @@ const returnAllClubs = async (req: Request, res: Response) => {
             res.status(200).json(allClubs)
         })
     } catch (err) {
-        console.log('catch error:', err)
-        res.status(500).json(err)
+      console.log('catch error:', err)
+      res.status(500).json(err)
     }
 }
 
@@ -30,7 +30,6 @@ const createClub = async (req: Request, res: Response): Promise<void> => {
             res.status(201).json(`New Club ID: ${savedClub._id}`)
         }
     } catch (err) {
-        console.log('catch error', err)
         res.status(500).json(err)
     }
 }
