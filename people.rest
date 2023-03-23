@@ -28,7 +28,7 @@ Content-Type: application/json
     "email":"drebollo116@gmail.com",
     "birthday":"March 25",
     "city": "Albuquerque",
-    "state": "NM"
+    "state": "New Mexico"
 }
 
 ###

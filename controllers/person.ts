@@ -34,48 +34,8 @@ async function getOnePerson(req: Request, res: Response) {
         return;
     }
     
-    
 }
  
- 
-//create new user person
-/*
-async function createPerson(req: Request, res: Response) {
-    
-    if(req.body.email > 1){
-        for(let i in req.body.email){
-            if(req.body.email[i] > 1){
-                res.status(400).json({ message: 'Email already exists' })
-                return
-            }
-            else{
-                req.body.email[i] = req.body.email[i].toLowerCase()
-            }
-        }
-       
-    }
-    const person = {
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        email: req.body.email,
-        birthday: req.body.birthday,
-        city: req.body.city,
-        state: req.body.state,
-    }
-    try {
-        const newPerson = await modelUser.collection.insertOne(person)
-        res.status(201).json(newPerson)
-        if (newPerson) {
-        } else {
-            res.status(400).json('unable to create person')
-        }
-    } catch (error) {
-        res.status(500).json(error)
-    }
-}
-*/
- 
-
 //update person
 async function updatePerson(req: Request, res: Response) {
 
@@ -92,8 +52,7 @@ async function updatePerson(req: Request, res: Response) {
 
         const id = req.params.id
         const person = await modelUser.findByIdAndUpdate(id, personinfo) 
-        //const updatedPerson = await modelUser.findByIdAndUpdate(id, person, { new: true })
-        
+         
         if (person) {
             res.status(200).json({message: "Person updated successfully"})
         } else {
@@ -106,11 +65,7 @@ async function updatePerson(req: Request, res: Response) {
         return;
     }
    
-   /* const id = req.params.id
-    const person = await modelUser.findByIdAndUpdate(id)
-    res.status(200).json(person)
-    */
-}
+  }
 
 //delete person
 async function deletePerson(req: Request, res: Response) {
@@ -134,7 +89,6 @@ async function deletePerson(req: Request, res: Response) {
 module.exports = {
     getAllPerson,
     getOnePerson,
-    //createPerson,
     updatePerson,
     deletePerson,
 }
