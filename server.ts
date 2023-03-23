@@ -3,10 +3,12 @@ import 'dotenv/config'
 import { connectMongoose } from './db/connect'
 import bodyParser from 'body-parser'
 import cors from 'cors'
+import passport from 'passport'
+const session = require('express-session')
 
 require('mongoose')
 
-connectMongoose()
+
 
 const port = process.env.PORT || 3000
 const app = express()
@@ -20,7 +22,7 @@ if (process.env.NODE_ENV === 'development') {
     app.use(morgan('dev'))
 }
  app.use(
-    session({
+        session({
         secret: 'send it',
         resave: false,
         saveUninitialized: false,

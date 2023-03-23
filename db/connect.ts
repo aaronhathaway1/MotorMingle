@@ -16,6 +16,7 @@ export const connectMongoose = async (): Promise<Connection> => {
             useUnifiedTopology: true,
         } as MyConnectOptions)
 
+      
         console.log(`MongoDB Connected: ${conn.connection.host}`)
         return conn.connection
     } catch (err) {
@@ -23,5 +24,6 @@ export const connectMongoose = async (): Promise<Connection> => {
         process.exit(1)
     }
 }
+
 
 export default connectMongoose
