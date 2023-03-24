@@ -5,10 +5,10 @@
     "description": "This is a database designed to help car enthusiasts get together.",
     "version": "1.0.0"
   },
-  "host": "motormingle.onrender.com",
+  "host": "localhost:3000",
   "basePath": "/",
   "schemes": [
-    "https"
+    "http"
   ],
   "paths": {
     "/api-docs": {
