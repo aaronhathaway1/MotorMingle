@@ -1,4 +1,4 @@
-import { Request, Response } from 'express'
+import { Request, Response, NextFunction } from 'express'
 const passport = require('passport')
 
 const express = require('express')
@@ -9,16 +9,13 @@ interface AuthRequest extends Request {
     logout(): void
 }
 
-// @desc    Auth with Google
-// @route   GET /auth/google
 router.get(
     '/google',
     passport.authenticate('google', {
         scope: ['email', 'profile'],
     })
 )
-// @desc    Google auth callback
-// @route   GET /auth/google/callback
+
 router.get(
     '/google/callback',
     passport.authenticate('google', {
@@ -29,14 +26,15 @@ router.get(
     }
 )
 
-// @desc    Logout user
-// @route   /auth/logout
-router.get('/logout', (req: AuthRequest, res: Response) => {
-    if (req.isAuthenticated()) {
-        req.logout()
-        res.json({ success: true })
-    } else {
-        res.status(401).json('Not authorized! Please log in.')
-    }
+router.get('/logout', (req: AuthRequest, res: Response, next: NextFunction) => {
+    // @ts-ignore
+    req.logout((err) => {
+        if (err) {
+            res.status(500)
+            return next(err)
+        } else {
+            res.status(200).json({ success: true })
+        }
+    })
 })
 module.exports = router
