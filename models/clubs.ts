@@ -20,10 +20,4 @@ const ClubSchema = new mongoose.Schema({
     clubMembers: ['String'],
 })
 
-ClubSchema.statics = {
-    valueExists(query) {
-        return this.findOne(query).then((result: any) => result)
-    },
-}
-
 module.exports = mongoose.model('Club', ClubSchema)

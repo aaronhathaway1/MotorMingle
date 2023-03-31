@@ -19,10 +19,4 @@ const EventSchema = new mongoose.Schema({
     },
 })
 
-EventSchema.statics = {
-    valueExists(query) {
-        return this.findOne(query).then((result: any) => result)
-    },
-}
-
 module.exports = mongoose.model('Event', EventSchema)

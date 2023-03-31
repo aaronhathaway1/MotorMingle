@@ -9,8 +9,8 @@ const returnAllClubs = async (req: Request, res: Response) => {
             res.status(200).json(allClubs)
         })
     } catch (err) {
-      console.log('catch error:', err)
-      res.status(500).json(err)
+        console.log('catch error:', err)
+        res.status(500).json(err)
     }
 }
 
@@ -96,7 +96,6 @@ const updateClub = async (req: Request, res: Response) => {
         await doc.save()
         res.status(204).json()
     } catch (err: any) {
-        console.log('catch error', err)
         if (err.name === 'CastError') {
             res.status(400).json(err.message)
         } else {
