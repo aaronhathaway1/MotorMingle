@@ -1,14 +1,13 @@
 import express, { Request, Response, NextFunction } from 'express'
-import 'dotenv/config' 
+import 'dotenv/config'
 import { connectMongoose } from './db/connect'
 import bodyParser from 'body-parser'
 import cors from 'cors'
 import passport from 'passport'
-const session = require('express-session')
+import session from 'express-session'
+require('./controllers/passport')
 
 require('mongoose')
-
-
 
 const port = process.env.PORT || 3000
 const app = express()
@@ -16,13 +15,14 @@ const app = express()
 connectMongoose()
 
 app.use(bodyParser.urlencoded({ extended: false }))
-app.use(bodyParser.json()) 
+app.use(bodyParser.json())
+app.use(cors())
 if (process.env.NODE_ENV === 'development') {
     const morgan = require('morgan')
     app.use(morgan('dev'))
 }
- app.use(
-        session({
+app.use(
+    session({
         secret: 'send it',
         resave: false,
         saveUninitialized: false,

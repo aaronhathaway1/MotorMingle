@@ -16,14 +16,13 @@ export const connectMongoose = async (): Promise<Connection> => {
             useUnifiedTopology: true,
         } as MyConnectOptions)
 
-      
         console.log(`MongoDB Connected: ${conn.connection.host}`)
+        console.log(`${new Date(Date.now())}`)
         return conn.connection
     } catch (err) {
         console.error(err)
         process.exit(1)
     }
 }
-
 
 export default connectMongoose

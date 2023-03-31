@@ -1,3 +1,5 @@
+require('dotenv/config')
+
 const swaggerAutogen = require('swagger-autogen')()
 const inDevMode = process.env.NODE_ENV === 'development'
 let doc
