@@ -21,7 +21,7 @@ if (inDevMode) {
             description:
                 'This is a database designed to help car enthusiasts get together.',
         },
-        host: 'motormingle.onrender.com',
+        host: 'motor-mingle.onrender.com',
         schemes: ['https'],
     }
 }
