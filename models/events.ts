@@ -8,6 +8,7 @@ const EventSchema = new mongoose.Schema({
     time: {
         type: 'String',
         required: true,
+        timestamp: true,
     },
     location: {
         type: 'String',
@@ -17,6 +18,7 @@ const EventSchema = new mongoose.Schema({
         type: 'String',
         required: true,
     },
-})
-
+}) 
+ 
+ 
 module.exports = mongoose.model('Event', EventSchema)

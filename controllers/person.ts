@@ -1,10 +1,11 @@
 //person controller
-import { Request, Response } from 'express'
+import { Request, Response } from 'express' 
 require('mongoose')
 const modelUser = require('../models/person')
 
 //get All Person
 const getAllPerson = async (req: Request, res: Response) => {
+    
     try {
         const person = await modelUser.find()
         if (person) {
@@ -21,6 +22,13 @@ const getAllPerson = async (req: Request, res: Response) => {
 //get one person
 async function getOnePerson(req: Request, res: Response) {
     try{
+        const Checkid = Number(req.params.id);
+
+        if (Number.isNaN(Checkid)) {
+          res.status(400).json({ message: 'ID must be a number' });
+          return;
+        }
+
         const id = req.params.id
         const person = await modelUser.findById(id)
         if (person) {
@@ -41,6 +49,31 @@ async function updatePerson(req: Request, res: Response) {
 
     try{
        
+        if(!req.body.firstName || req.body.firstName != "string"){
+            res.status(400).json({message:"first Name Error"})
+            return;
+        }
+        if(!req.body.lastName || req.body.lastName!= "string"){
+            res.status(400).json({message:"last Name Error"})
+            return;
+        }
+        if(!req.body.email || req.body.email!= "string"){
+            res.status(400).json({message:"Email Error"})
+            return;
+        }
+        if(req.body.birthday != "string"){
+            res.status(400).json({message:"string Error Birthday"})
+            return;
+        }
+        if(req.body.city!= "string"){
+            res.status(400).json({message:"string Error City"})
+            return;
+        }
+        if(req.body.state!= "string"){
+            res.status(400).json({message:"string Error State"})
+            return;
+        }
+        
         const personinfo = {
             firstName: req.body.firstName,
             lastName: req.body.lastName,
@@ -71,6 +104,13 @@ async function updatePerson(req: Request, res: Response) {
 async function deletePerson(req: Request, res: Response) {
     
     try{
+
+        const deleteid = Number(req.params.id);
+
+        if (Number.isNaN(deleteid)) {
+          res.status(400).json({ message: 'ID must be a number' });
+          return;
+        }
         const id = req.params.id
         const person = await modelUser.findByIdAndDelete(id)
         

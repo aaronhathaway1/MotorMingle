@@ -1,6 +1,13 @@
 ###
 GET http://localhost:3000/person
 
+
+###
+GET http://localhost:3000/auth/google
+
+###
+GET http://localhost:3000/events
+
 ###
 GET http://localhost:3000/person/6415278a36a84d3235f6c15d
 
