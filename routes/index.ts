@@ -8,7 +8,7 @@ const { ensureAuth } = require('../middleware/auth')
 router
     .use('/auth', require('./auth'))
     .use('/person', ensureAuth, require('./person'))
-    .use('/cars', ensureAuth, require('./cars'))
+    .use('/cars', require('./cars'))
     .use('/clubs', ensureAuth, require('./clubs'))
     .use('/events', ensureAuth, require('./events'))
     .use('/api-docs', swaggerUi.serve)
