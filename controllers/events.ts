@@ -38,7 +38,7 @@ const findEventById = async (req: Request, res: Response) => {
     if (!ObjectId.isValid(req.params)) {
         res.status(400).json('Must use a valid Event ID.')
     }
-
+    
     const eventId = new ObjectId(req.params.id)
     try {
         await Event.findById(eventId).then((event: typeof Event) => {

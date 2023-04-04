@@ -1,10 +1,11 @@
 //person controller
-import { Request, Response } from 'express'
+import { Request, Response } from 'express' 
 require('mongoose')
 const modelUser = require('../models/person')
 
 //get All Person
 const getAllPerson = async (req: Request, res: Response) => {
+    
     try {
         const person = await modelUser.find()
         if (person) {
@@ -40,7 +41,43 @@ async function getOnePerson(req: Request, res: Response) {
 async function updatePerson(req: Request, res: Response) {
 
     try{
+          
+        if (!/^[a-zA-Z]+$/.test(req.body.firstName)) {
+            res.status(400).json({ message: "First name should contain only letters" });
+            return;
+        }
+        if( req.body.firstName.length <= 1 || req.body.firstName.length >= 20){
+            res.status(400).json({message:"Has to be more than 1 letter or less than 20 letters"})
+            return;
+        }
+        if(req.body.lastName !== String(req.body.lastName)){
+            res.status(400).json({message:"last Name Error"})
+            return;
+        }
+        if( req.body.lastName.length <= 1 || req.body.lastName.length >= 20){
+            res.status(400).json({message:"Has to be more than 1 letter or less than 20 letters"})
+            return;
+        }
+        if (!/^[a-zA-Z]+$/.test(req.body.lastName)) {
+            res.status(400).json({ message: "Last name should contain only letters" });
+            return;
+        }
+        if(!req.body.email || req.body.email!= String(req.body.email)){
+            res.status(400).json({message:"Email Error"})
+            return;
+        }
+     
+        if(req.body.birthday !== String(req.body.birthday)){
+            res.status(400).json({message:"string Error Birthday"})
+            return;
+        }
+          
+        if (!/^[a-zA-Z]+$/.test(req.body.city)) {
+            res.status(400).json({ message: "City should contain only letters" });
+            return;
+        }
        
+        
         const personinfo = {
             firstName: req.body.firstName,
             lastName: req.body.lastName,
@@ -71,6 +108,7 @@ async function updatePerson(req: Request, res: Response) {
 async function deletePerson(req: Request, res: Response) {
     
     try{
+
         const id = req.params.id
         const person = await modelUser.findByIdAndDelete(id)
         
