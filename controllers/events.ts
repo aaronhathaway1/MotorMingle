@@ -38,12 +38,6 @@ const findEventById = async (req: Request, res: Response) => {
     if (!ObjectId.isValid(req.params)) {
         res.status(400).json('Must use a valid Event ID.')
     }
-
-    const Checkid = Number(req.params.id);
-    if (Number.isNaN(Checkid)) {
-        res.status(400).json({ message: 'must be a number' });
-        return;
-    }
     
     const eventId = new ObjectId(req.params.id)
     try {

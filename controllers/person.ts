@@ -22,13 +22,6 @@ const getAllPerson = async (req: Request, res: Response) => {
 //get one person
 async function getOnePerson(req: Request, res: Response) {
     try{
-        const Checkid = Number(req.params.id);
-
-        if (Number.isNaN(Checkid)) {
-          res.status(400).json({ message: 'ID must be a number' });
-          return;
-        }
-
         const id = req.params.id
         const person = await modelUser.findById(id)
         if (person) {
@@ -119,12 +112,6 @@ async function deletePerson(req: Request, res: Response) {
     
     try{
 
-        const deleteid = Number(req.params.id);
-
-        if (Number.isNaN(deleteid)) {
-          res.status(400).json({ message: 'ID must be a number' });
-          return;
-        }
         const id = req.params.id
         const person = await modelUser.findByIdAndDelete(id)
         
