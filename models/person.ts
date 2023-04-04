@@ -20,8 +20,6 @@ const personSchema = new schema({
     },
     birthday: {
         type: Date,
-        min: '1900-01-01',
-        max: '2023-01-01'
     },
     city: {
         type: String,

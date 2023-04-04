@@ -8,7 +8,6 @@ const EventSchema = new mongoose.Schema({
     time: {
         type: 'String',
         required: true,
-        timestamp: true,
     },
     location: {
         type: 'String',
