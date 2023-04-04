@@ -18,7 +18,7 @@
         "build": "tsc -p .",
         "dev": "node ./swagger.ts & nodemon ./server.ts",
         "swagger": "node ./swagger.ts",
-        "test": "jest --watchAll --verbose"
+        "test": "jest --watchAll --verbose --maxWorkers=1 --detectOpenHandles"
     },
     "homepage": "https://github.com/aaronhathaway1/MotorMingle#readme",
     "dependencies": {

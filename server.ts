@@ -9,7 +9,7 @@ require('./controllers/passport')
 
 require('mongoose')
 
-const port = process.env.PORT || 49151
+const port = process.env.PORT
 const app = express()
 
 connectMongoose()
@@ -38,6 +38,10 @@ app.use('/', require('./routes'))
 app.use('/auth', require('./routes/auth'))
 app.listen(port, (): void => {
     console.log(`MotorMingle app listening on port ${port}`)
+})
+
+app.get('/', (req: Request, res: Response) => {
+    res.status(200).json('Welcome to Motor Mingle!')
 })
 
 module.exports = app
