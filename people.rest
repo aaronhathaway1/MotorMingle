@@ -21,10 +21,10 @@ Content-Type: application/json
     "lastName":"Rebollo",
     "email":"drebollo116@gmail.com",
     "birthday":"03/25/1984",
-    "city": "Alb",
-    "state": "NM"
+    "city": "Albuquerque",
+    "state": "New Mexico"
 }
 
 ###
-DELETE http://localhost:3000/person/113535190039943473046 HTTP/1.1
+DELETE http://localhost:3000/person/123456789132465468 HTTP/1.1
 

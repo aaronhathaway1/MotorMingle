@@ -76,10 +76,7 @@ async function updatePerson(req: Request, res: Response) {
             res.status(400).json({ message: "City should contain only letters" });
             return;
         }
-        if (!/^[a-zA-Z]+$/.test(req.body.state)) {
-            res.status(400).json({ message: "State should contain only letters" });
-            return;
-        }
+       
         
         const personinfo = {
             firstName: req.body.firstName,
