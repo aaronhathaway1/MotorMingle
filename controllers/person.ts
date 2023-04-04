@@ -48,29 +48,43 @@ async function getOnePerson(req: Request, res: Response) {
 async function updatePerson(req: Request, res: Response) {
 
     try{
-       
-        if(!req.body.firstName || req.body.firstName != "string"){
-            res.status(400).json({message:"first Name Error"})
+          
+        if (!/^[a-zA-Z]+$/.test(req.body.firstName)) {
+            res.status(400).json({ message: "First name should contain only letters" });
             return;
         }
-        if(!req.body.lastName || req.body.lastName!= "string"){
+        if( req.body.firstName.length <= 1 || req.body.firstName.length >= 20){
+            res.status(400).json({message:"Has to be more than 1 letter or less than 20 letters"})
+            return;
+        }
+        if(req.body.lastName !== String(req.body.lastName)){
             res.status(400).json({message:"last Name Error"})
             return;
         }
-        if(!req.body.email || req.body.email!= "string"){
+        if( req.body.lastName.length <= 1 || req.body.lastName.length >= 20){
+            res.status(400).json({message:"Has to be more than 1 letter or less than 20 letters"})
+            return;
+        }
+        if (!/^[a-zA-Z]+$/.test(req.body.lastName)) {
+            res.status(400).json({ message: "Last name should contain only letters" });
+            return;
+        }
+        if(!req.body.email || req.body.email!= String(req.body.email)){
             res.status(400).json({message:"Email Error"})
             return;
         }
-        if(req.body.birthday != "string"){
+     
+        if(req.body.birthday !== String(req.body.birthday)){
             res.status(400).json({message:"string Error Birthday"})
             return;
         }
-        if(req.body.city!= "string"){
-            res.status(400).json({message:"string Error City"})
+          
+        if (!/^[a-zA-Z]+$/.test(req.body.city)) {
+            res.status(400).json({ message: "City should contain only letters" });
             return;
         }
-        if(req.body.state!= "string"){
-            res.status(400).json({message:"string Error State"})
+        if (!/^[a-zA-Z]+$/.test(req.body.state)) {
+            res.status(400).json({ message: "State should contain only letters" });
             return;
         }
         
