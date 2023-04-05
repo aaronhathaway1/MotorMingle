@@ -6,7 +6,7 @@ const router = Router()
 const { ensureAuth } = require('../middleware/auth')
 
 router
-    .use('/auth', ensureAuth, require('./auth'))
+    .use('/auth', require('./auth'))
     .use('/person', ensureAuth, require('./person'))
     .use('/cars', ensureAuth,  require('./cars'))
     .use('/clubs', ensureAuth,  require('./clubs'))
